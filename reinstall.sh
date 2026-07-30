@@ -7,8 +7,8 @@
 # 安装运行时依赖，或作为引导组件来源，不表示支持重装为那些系统。
 
 set -eE
-github_confhome=https://raw.githubusercontent.com/imengying/reinstall/main
-jsdelivr_confhome=https://cdn.jsdelivr.net/gh/imengying/reinstall@main
+github_confhome=https://raw.githubusercontent.com/edehan/reinstall/main
+jsdelivr_confhome=https://cdn.jsdelivr.net/gh/edehan/reinstall@main
 confhome=$github_confhome
 
 # 用于判断 reinstall.sh 和 trans.sh 是否兼容

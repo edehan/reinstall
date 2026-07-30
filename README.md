@@ -20,13 +20,13 @@
 GitHub Raw：
 
 ```bash
-curl -O https://raw.githubusercontent.com/imengying/reinstall/main/reinstall.sh || wget -O ${_##*/} $_
+curl -O https://raw.githubusercontent.com/edehan/reinstall/main/reinstall.sh || wget -O ${_##*/} $_
 ```
 
 jsDelivr：
 
 ```bash
-curl -O https://cdn.jsdelivr.net/gh/imengying/reinstall@main/reinstall.sh || wget -O ${_##*/} $_
+curl -O https://cdn.jsdelivr.net/gh/edehan/reinstall@main/reinstall.sh || wget -O ${_##*/} $_
 ```
 
 ## 🚀 快速开始
