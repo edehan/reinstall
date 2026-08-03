@@ -101,20 +101,23 @@ yum install -y curl grep openssl
 apk add curl grep openssl bash
 ```
 
-## 🧹 临时文件管理
+## Btrfs系统创建512M Swap文件
 
-脚本运行时会创建以下临时文件：
+```bash
+# 1. 创建隔离子卷
+btrfs subvolume create /swap 2>/dev/null || true
 
-- `/reinstall-tmp/` - 临时工作目录（脚本结束时自动清理）
-- `/reinstall-vmlinuz` - 安装内核（重启后使用，正常完成时保留）
-- `/reinstall-initrd` - 初始化内存盘（重启后使用，正常完成时保留）
-- `/reinstall-firmware` - 固件文件（如需要，重启后使用）
+# 2. 创建空文件关闭写时复制
+touch /swap/swapfile
+chattr +C /swap/swapfile
 
-**自动清理机制：**
-- ✅ 脚本正常完成：清理 `/reinstall-tmp/`，保留安装文件
-- ✅ 脚本异常退出：清理所有临时文件
-- ✅ 用户中断（Ctrl+C）：清理所有临时文件
+# 3. 使用dd创建512M文件
+dd if=/dev/zero of=/swap/swapfile bs=1M count=512 status=progress
 
+chmod 600 /swap/swapfile
+mkswap /swap/swapfile
+swapon /swap/swapfile
+```
 ## 📜 许可证
 
 本项目遵循 [GNU GPL v3.0](LICENSE) 开源协议。
