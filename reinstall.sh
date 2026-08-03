@@ -878,8 +878,8 @@ prompt_password() {
     while true; do
         # 特殊字符列表
         # 有的机器运行 centos 7 ，用 /dev/random 产生 16 位密码，开启了 rngd 也要 5 秒，关闭了 rngd 则长期阻塞
-        chars='A-Za-z0-9~!@#$%^&*_=+`|(){}[]:;"<>,.?/-'
-        random_password=$(tr -dc "$chars" </dev/urandom | head -c16)
+        chars='A-Za-z0-9'
+        random_password=$(tr -dc "$chars" </dev/urandom | head -c24)
         IFS= read -r -p "Password: " password
         if [ -n "$password" ]; then
             IFS= read -r -p "Retype password: " password_confirm
